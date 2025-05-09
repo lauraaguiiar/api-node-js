@@ -1,12 +1,12 @@
 const express = require('express'); 
 const router = express.Router(); 
 
-const UsuariosController = require('../controllers/usuarios'); 
+const SensorController = require('../controllers/sensor'); 
 
-router.get('/usuarios', UsuariosController.listarUsuarios); 
-router.post('/usuarios', UsuariosController.cadastrarUsuarios); 
-router.patch('/usuarios', UsuariosController.editarUsuarios); 
-router.delete('/usuarios', UsuariosController.apagarUsuarios); 
+router.get('/sensor', SensorController.listarSensor); 
+router.post('/sensor', SensorController.cadastrarSensor); 
+router.patch('/sensor', SensorController.editarSensor); 
+router.delete('/sensor', SensorController.apagarSensor); 
 
 
 module.exports = router;
