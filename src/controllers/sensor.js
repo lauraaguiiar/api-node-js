@@ -3,10 +3,21 @@ const db = require('../dataBase/connection');
 module.exports = {
     async listarSensor(request, response) {
         try {
+            
+           const sql = `
+            SELECT 
+           id_sensor, id_loc_irriga, tipo_sensor 
+           FROM sensor;
+           `;
+          
+           const [rows] = await db.query(sql);
+
+
             return response.status(200).json({
                 sucesso: true, 
                 mensagem: 'Lista de sensor', 
-                dados: null
+                itens: rows.length,
+                dados: rows
             });
         } catch (error) {
             return response.status(500).json({
