@@ -72,12 +72,30 @@ module.exports = {
 
             const sql = `
             UPDATE sensor SET
+            tipo_sensor = ?
+            WHERE
+            id_loc_irriga = ?;
             `
+            const values = [];
+            const [result] = await db.query(sql, values);
+
+            if (result.affectedRows === 0) {
+                return response.status(404).json({
+                    sucesso: false,
+                    mensagem: `Sensor ${id} não encontrado!`,
+                    dados: null
+                });
+            }
+
+            const dados = {
+                
+            };
+
 
             return response.status(200).json({
                 sucesso: true, 
-                mensagem: 'Alteração no cadastro de sensor', 
-                dados: null
+                mensagem: `Sensor ${id} atualizado com sucesso!`,
+                dados
             });
         } catch (error) {
             return response.status(500).json({

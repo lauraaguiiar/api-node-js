@@ -5,7 +5,7 @@ const SensorController = require('../controllers/sensor');
 
 router.get('/sensor', SensorController.listarSensor); 
 router.post('/sensor', SensorController.cadastrarSensor); 
-router.patch('/sensor', SensorController.editarSensor); 
+router.patch('/sensor/:id', SensorController.editarSensor); 
 router.delete('/sensor', SensorController.apagarSensor); 
 
 
