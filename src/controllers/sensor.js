@@ -71,12 +71,13 @@ module.exports = {
             const { id } = request.params;
 
             const sql = `
-            UPDATE sensor SET
+            UPDATE sensor SET 
+            id_loc_irriga = ?, 
             tipo_sensor = ?
             WHERE
-            id_loc_irriga = ?;
+            id_sensor = ?;
             `
-            const values = [];
+            const values = [id_loc_irriga, tipo_sensor, id];
             const [result] = await db.query(sql, values);
 
             if (result.affectedRows === 0) {
@@ -88,7 +89,7 @@ module.exports = {
             }
 
             const dados = {
-                
+                tipo_sensor
             };
 
 
