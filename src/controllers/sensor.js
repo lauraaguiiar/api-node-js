@@ -108,9 +108,27 @@ module.exports = {
     }, 
     async apagarSensor(request, response) {
         try {
+
+            const { id } = request.params;
+
+            const sql = `DELETE FROM sensor WHERE tipo_sensor = ?`;
+
+            const values = [id];
+
+            const [result] = await db.query(sql, values);
+
+            
+            if (result.affectedRows === 0) {
+                return response.status(404).json({
+                    sucesso:false,
+                    mensagem: `Sensor ${id} não encontrado!`,
+                    dados: null
+                });
+            } 
+
             return response.status(200).json({
                 sucesso: true, 
-                mensagem: 'Exclusão de sensor', 
+                mensagem: `Sensor ${id} excluido com sucesso`,
                 dados: null
             });
         } catch (error) {
