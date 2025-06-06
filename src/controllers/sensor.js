@@ -111,7 +111,7 @@ module.exports = {
 
             const { id } = request.params;
 
-            const sql = `DELETE FROM sensor WHERE tipo_sensor = ?`;
+            const sql = `DELETE FROM sensor WHERE id_sensor = ?`;
 
             const values = [id];
 
@@ -137,6 +137,7 @@ module.exports = {
                 mensagem: 'Erro na requisição.', 
                 dados: error.message
             });
+
         }
     }, 
 };  
